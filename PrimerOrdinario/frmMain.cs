@@ -67,7 +67,7 @@ namespace PrimerOrdinario
                 if(numberVal.Equals("")) { numResult = true; }
                 else
                 {
-                    if (numberVal.Equals(".")) { numResult = false; }
+                    if (numberVal.Contains(".")) { numResult = false; }
                     else {
                         decimal number3 = 0;
                         bool canConvert = decimal.TryParse(numberVal, out number3);
@@ -171,28 +171,35 @@ namespace PrimerOrdinario
                 //Se valida que los textbox no tengan valores en blanco
                 if ((!string.IsNullOrWhiteSpace(txtColumnas.Text)) && (!string.IsNullOrWhiteSpace(txtFilas.Text)))
                 {
-                    //creamos la instancia matriz con los valores de filas y columnas previamente validados
-                    Matriz matriz = new Matriz(Convert.ToInt32(txtFilas.Text), Convert.ToInt32(txtColumnas.Text));
-                    //asignamos la cantidad de columnas al gridview para evitar errores
-                    //asi el gridview y la matriz tienen el mismo tama;o
-                    gvMatriz.ColumnCount = matriz.IntColumnas;
-
-                    //recorrido del gridview segun los valores proporcionados
-                    for (int r = 0; r < matriz.IntFilas; r++)
+                    if (Convert.ToInt32(txtColumnas.Text)==0 || Convert.ToInt32(txtFilas.Text) == 0) 
                     {
-                        //creamos un row nuevo para ingresarlo en el gridview
-                        DataGridViewRow row = new DataGridViewRow();
-                        //creamos las celdas del row del gridview
-                        row.CreateCells(gvMatriz);
+                        msgAlert = "Filas y Columnas\r\n el valor tiene que ser mayor a 0.";
+                    }
+                    else 
+                    {
+                        //creamos la instancia matriz con los valores de filas y columnas previamente validados
+                        Matriz matriz = new Matriz(Convert.ToInt32(txtFilas.Text), Convert.ToInt32(txtColumnas.Text));
+                        //asignamos la cantidad de columnas al gridview para evitar errores
+                        //asi el gridview y la matriz tienen el mismo tama;o
+                        gvMatriz.ColumnCount = matriz.IntColumnas;
 
-                        for (int c = 0; c < matriz.IntColumnas; c++)
+                        //recorrido del gridview segun los valores proporcionados
+                        for (int r = 0; r < matriz.IntFilas; r++)
                         {
-                            //asignamos el valor a la celda del grid 
-                            //correspondiente a la misma posicion en la matriz
-                            row.Cells[c].Value = matriz.Matrix(r, c);
+                            //creamos un row nuevo para ingresarlo en el gridview
+                            DataGridViewRow row = new DataGridViewRow();
+                            //creamos las celdas del row del gridview
+                            row.CreateCells(gvMatriz);
+
+                            for (int c = 0; c < matriz.IntColumnas; c++)
+                            {
+                                //asignamos el valor a la celda del grid 
+                                //correspondiente a la misma posicion en la matriz
+                                row.Cells[c].Value = matriz.Matrix(r, c);
+                            }
+                            //agregamos el row al gridview
+                            gvMatriz.Rows.Add(row);
                         }
-                        //agregamos el row al gridview
-                        gvMatriz.Rows.Add(row);
                     }
                 }
                 else { msgAlert = "Filas y Columnas\r\n no pueden ser valores nulos o vacios."; }
