@@ -45,14 +45,16 @@
             this.lblFilas = new System.Windows.Forms.Label();
             this.lblColumnas = new System.Windows.Forms.Label();
             this.btnImprimir = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox2 = new System.Windows.Forms.TextBox();
-            this.textBox3 = new System.Windows.Forms.TextBox();
+            this.btnLimpiaMatriz = new System.Windows.Forms.Button();
+            this.txtFilas = new System.Windows.Forms.TextBox();
+            this.txtColumnas = new System.Windows.Forms.TextBox();
+            this.gvMatriz = new System.Windows.Forms.DataGridView();
             this.tabOrdinario.SuspendLayout();
             this.tabMatriz.SuspendLayout();
             this.tabDivision.SuspendLayout();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMatriz)).BeginInit();
             this.SuspendLayout();
             // 
             // tabOrdinario
@@ -62,7 +64,7 @@
             this.tabOrdinario.Location = new System.Drawing.Point(12, 63);
             this.tabOrdinario.Name = "tabOrdinario";
             this.tabOrdinario.SelectedIndex = 0;
-            this.tabOrdinario.Size = new System.Drawing.Size(858, 343);
+            this.tabOrdinario.Size = new System.Drawing.Size(639, 292);
             this.tabOrdinario.TabIndex = 9;
             // 
             // tabMatriz
@@ -71,7 +73,7 @@
             this.tabMatriz.Location = new System.Drawing.Point(4, 22);
             this.tabMatriz.Name = "tabMatriz";
             this.tabMatriz.Padding = new System.Windows.Forms.Padding(3);
-            this.tabMatriz.Size = new System.Drawing.Size(850, 317);
+            this.tabMatriz.Size = new System.Drawing.Size(631, 266);
             this.tabMatriz.TabIndex = 0;
             this.tabMatriz.Text = "Matriz";
             this.tabMatriz.UseVisualStyleBackColor = true;
@@ -179,7 +181,7 @@
             // 
             this.lblOrdinarioI.AutoSize = true;
             this.lblOrdinarioI.Font = new System.Drawing.Font("Microsoft Sans Serif", 22F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblOrdinarioI.Location = new System.Drawing.Point(320, 24);
+            this.lblOrdinarioI.Location = new System.Drawing.Point(223, 24);
             this.lblOrdinarioI.Name = "lblOrdinarioI";
             this.lblOrdinarioI.Size = new System.Drawing.Size(154, 36);
             this.lblOrdinarioI.TabIndex = 10;
@@ -187,12 +189,13 @@
             // 
             // groupBox2
             // 
+            this.groupBox2.Controls.Add(this.gvMatriz);
             this.groupBox2.Controls.Add(this.lblFilas);
             this.groupBox2.Controls.Add(this.lblColumnas);
             this.groupBox2.Controls.Add(this.btnImprimir);
-            this.groupBox2.Controls.Add(this.button2);
-            this.groupBox2.Controls.Add(this.textBox2);
-            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Controls.Add(this.btnLimpiaMatriz);
+            this.groupBox2.Controls.Add(this.txtFilas);
+            this.groupBox2.Controls.Add(this.txtColumnas);
             this.groupBox2.Location = new System.Drawing.Point(6, 6);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(616, 252);
@@ -223,42 +226,59 @@
             this.btnImprimir.Name = "btnImprimir";
             this.btnImprimir.Size = new System.Drawing.Size(75, 23);
             this.btnImprimir.TabIndex = 11;
-            this.btnImprimir.Text = "Dividir";
+            this.btnImprimir.Text = "Imprimir";
             this.btnImprimir.UseVisualStyleBackColor = true;
+            this.btnImprimir.Click += new System.EventHandler(this.btnImprimir_Click);
             // 
-            // button2
+            // btnLimpiaMatriz
             // 
-            this.button2.Location = new System.Drawing.Point(9, 98);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 12;
-            this.button2.Text = "Limpiar";
-            this.button2.UseVisualStyleBackColor = true;
+            this.btnLimpiaMatriz.Location = new System.Drawing.Point(9, 98);
+            this.btnLimpiaMatriz.Name = "btnLimpiaMatriz";
+            this.btnLimpiaMatriz.Size = new System.Drawing.Size(75, 23);
+            this.btnLimpiaMatriz.TabIndex = 12;
+            this.btnLimpiaMatriz.Text = "Limpiar";
+            this.btnLimpiaMatriz.UseVisualStyleBackColor = true;
+            this.btnLimpiaMatriz.Click += new System.EventHandler(this.btnLimpiaMatriz_Click);
             // 
-            // textBox2
+            // txtFilas
             // 
-            this.textBox2.Location = new System.Drawing.Point(9, 32);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(100, 20);
-            this.textBox2.TabIndex = 9;
+            this.txtFilas.Location = new System.Drawing.Point(9, 32);
+            this.txtFilas.Name = "txtFilas";
+            this.txtFilas.Size = new System.Drawing.Size(100, 20);
+            this.txtFilas.TabIndex = 9;
+            this.txtFilas.TextChanged += new System.EventHandler(this.txtFilas_TextChanged);
             // 
-            // textBox3
+            // txtColumnas
             // 
-            this.textBox3.Location = new System.Drawing.Point(9, 72);
-            this.textBox3.Name = "textBox3";
-            this.textBox3.Size = new System.Drawing.Size(100, 20);
-            this.textBox3.TabIndex = 10;
+            this.txtColumnas.Location = new System.Drawing.Point(9, 72);
+            this.txtColumnas.Name = "txtColumnas";
+            this.txtColumnas.Size = new System.Drawing.Size(100, 20);
+            this.txtColumnas.TabIndex = 10;
+            this.txtColumnas.TextChanged += new System.EventHandler(this.txtColumnas_TextChanged);
+            // 
+            // gvMatriz
+            // 
+            this.gvMatriz.AllowUserToAddRows = false;
+            this.gvMatriz.AllowUserToDeleteRows = false;
+            this.gvMatriz.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.AllCells;
+            this.gvMatriz.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.gvMatriz.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.gvMatriz.Location = new System.Drawing.Point(133, 16);
+            this.gvMatriz.Name = "gvMatriz";
+            this.gvMatriz.ReadOnly = true;
+            this.gvMatriz.Size = new System.Drawing.Size(477, 230);
+            this.gvMatriz.TabIndex = 15;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(968, 557);
+            this.ClientSize = new System.Drawing.Size(656, 365);
             this.Controls.Add(this.lblOrdinarioI);
             this.Controls.Add(this.tabOrdinario);
             this.Name = "frmMain";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Form1";
+            this.Text = "Primer Ordinario Pablo Ugalde";
             this.tabOrdinario.ResumeLayout(false);
             this.tabMatriz.ResumeLayout(false);
             this.tabDivision.ResumeLayout(false);
@@ -266,6 +286,7 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.gvMatriz)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -290,9 +311,10 @@
         private System.Windows.Forms.Label lblFilas;
         private System.Windows.Forms.Label lblColumnas;
         private System.Windows.Forms.Button btnImprimir;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox2;
-        private System.Windows.Forms.TextBox textBox3;
+        private System.Windows.Forms.Button btnLimpiaMatriz;
+        private System.Windows.Forms.TextBox txtFilas;
+        private System.Windows.Forms.TextBox txtColumnas;
+        private System.Windows.Forms.DataGridView gvMatriz;
     }
 }
 
