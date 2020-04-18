@@ -50,7 +50,7 @@
             // 
             this.tabOrdinario.Controls.Add(this.tabPage1);
             this.tabOrdinario.Controls.Add(this.tabDivision);
-            this.tabOrdinario.Location = new System.Drawing.Point(12, 120);
+            this.tabOrdinario.Location = new System.Drawing.Point(12, 63);
             this.tabOrdinario.Name = "tabOrdinario";
             this.tabOrdinario.SelectedIndex = 0;
             this.tabOrdinario.Size = new System.Drawing.Size(858, 343);
@@ -138,6 +138,7 @@
             this.btnLimpiar.TabIndex = 11;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
+            this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
             // 
             // txtResultado
             // 
@@ -153,6 +154,7 @@
             this.txtDividendo.Name = "txtDividendo";
             this.txtDividendo.Size = new System.Drawing.Size(100, 20);
             this.txtDividendo.TabIndex = 9;
+            this.txtDividendo.TextChanged += new System.EventHandler(this.txtDividendo_TextChanged);
             // 
             // txtDivisor
             // 
@@ -160,6 +162,7 @@
             this.txtDivisor.Name = "txtDivisor";
             this.txtDivisor.Size = new System.Drawing.Size(100, 20);
             this.txtDivisor.TabIndex = 8;
+            this.txtDivisor.TextChanged += new System.EventHandler(this.txtDivisor_TextChanged);
             // 
             // lblOrdinarioI
             // 
@@ -171,14 +174,14 @@
             this.lblOrdinarioI.TabIndex = 10;
             this.lblOrdinarioI.Text = "Ordinario I";
             // 
-            // Form1
+            // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(968, 557);
             this.Controls.Add(this.lblOrdinarioI);
             this.Controls.Add(this.tabOrdinario);
-            this.Name = "Form1";
+            this.Name = "frmMain";
             this.Text = "Form1";
             this.tabOrdinario.ResumeLayout(false);
             this.tabDivision.ResumeLayout(false);
