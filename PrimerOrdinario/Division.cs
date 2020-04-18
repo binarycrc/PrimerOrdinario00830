@@ -15,19 +15,22 @@ namespace PrimerOrdinario
         {
             _dDivisor = 0;
             _dDividendo = 0;
-            _dResultado = 0;
         }
 
-        public Division(double dDivisor, double dDividendo, double dResultado)
+        public Division(double dDivisor, double dDividendo)
         {
             _dDivisor = dDivisor;
             _dDividendo = dDividendo;
-            _dResultado = dResultado;
         }
 
         public double dDivisor { get => _dDivisor; set => _dDivisor = value; }
         public double dDividendo { get => _dDividendo; set => _dDividendo = value; }
-        public double dResultado { get => _dResultado; set => _dResultado = value; }
+        public double dResultado { get => Operacion(); set => _dDividendo = Operacion(); }
+        //public double dResultado()
+        //{
+        //    _dResultado = Operacion();
+        //    return _dResultado;
+        //}
 
         private double Operacion() 
         {

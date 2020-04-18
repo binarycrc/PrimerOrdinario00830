@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.tabOrdinario = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.tabMatriz = new System.Windows.Forms.TabPage();
             this.tabDivision = new System.Windows.Forms.TabPage();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.label2 = new System.Windows.Forms.Label();
@@ -41,14 +41,23 @@
             this.txtDividendo = new System.Windows.Forms.TextBox();
             this.txtDivisor = new System.Windows.Forms.TextBox();
             this.lblOrdinarioI = new System.Windows.Forms.Label();
+            this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.lblFilas = new System.Windows.Forms.Label();
+            this.lblColumnas = new System.Windows.Forms.Label();
+            this.btnImprimir = new System.Windows.Forms.Button();
+            this.button2 = new System.Windows.Forms.Button();
+            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.textBox3 = new System.Windows.Forms.TextBox();
             this.tabOrdinario.SuspendLayout();
+            this.tabMatriz.SuspendLayout();
             this.tabDivision.SuspendLayout();
             this.groupBox1.SuspendLayout();
+            this.groupBox2.SuspendLayout();
             this.SuspendLayout();
             // 
             // tabOrdinario
             // 
-            this.tabOrdinario.Controls.Add(this.tabPage1);
+            this.tabOrdinario.Controls.Add(this.tabMatriz);
             this.tabOrdinario.Controls.Add(this.tabDivision);
             this.tabOrdinario.Location = new System.Drawing.Point(12, 63);
             this.tabOrdinario.Name = "tabOrdinario";
@@ -56,15 +65,16 @@
             this.tabOrdinario.Size = new System.Drawing.Size(858, 343);
             this.tabOrdinario.TabIndex = 9;
             // 
-            // tabPage1
+            // tabMatriz
             // 
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(850, 317);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "tabPage1";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.tabMatriz.Controls.Add(this.groupBox2);
+            this.tabMatriz.Location = new System.Drawing.Point(4, 22);
+            this.tabMatriz.Name = "tabMatriz";
+            this.tabMatriz.Padding = new System.Windows.Forms.Padding(3);
+            this.tabMatriz.Size = new System.Drawing.Size(850, 317);
+            this.tabMatriz.TabIndex = 0;
+            this.tabMatriz.Text = "Matriz";
+            this.tabMatriz.UseVisualStyleBackColor = true;
             // 
             // tabDivision
             // 
@@ -92,7 +102,6 @@
             this.groupBox1.Size = new System.Drawing.Size(311, 110);
             this.groupBox1.TabIndex = 9;
             this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "groupBox1";
             // 
             // label2
             // 
@@ -106,7 +115,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(11, 52);
+            this.label1.Location = new System.Drawing.Point(11, 24);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(58, 13);
             this.label1.TabIndex = 14;
@@ -115,7 +124,7 @@
             // lblDivisor
             // 
             this.lblDivisor.AutoSize = true;
-            this.lblDivisor.Location = new System.Drawing.Point(11, 26);
+            this.lblDivisor.Location = new System.Drawing.Point(11, 48);
             this.lblDivisor.Name = "lblDivisor";
             this.lblDivisor.Size = new System.Drawing.Size(42, 13);
             this.lblDivisor.TabIndex = 13;
@@ -126,16 +135,17 @@
             this.btnDividir.Location = new System.Drawing.Point(210, 69);
             this.btnDividir.Name = "btnDividir";
             this.btnDividir.Size = new System.Drawing.Size(75, 23);
-            this.btnDividir.TabIndex = 12;
+            this.btnDividir.TabIndex = 11;
             this.btnDividir.Text = "Dividir";
             this.btnDividir.UseVisualStyleBackColor = true;
+            this.btnDividir.Click += new System.EventHandler(this.btnDividir_Click);
             // 
             // btnLimpiar
             // 
             this.btnLimpiar.Location = new System.Drawing.Point(210, 19);
             this.btnLimpiar.Name = "btnLimpiar";
             this.btnLimpiar.Size = new System.Drawing.Size(75, 23);
-            this.btnLimpiar.TabIndex = 11;
+            this.btnLimpiar.TabIndex = 12;
             this.btnLimpiar.Text = "Limpiar";
             this.btnLimpiar.UseVisualStyleBackColor = true;
             this.btnLimpiar.Click += new System.EventHandler(this.btnLimpiar_Click);
@@ -147,10 +157,11 @@
             this.txtResultado.ReadOnly = true;
             this.txtResultado.Size = new System.Drawing.Size(100, 20);
             this.txtResultado.TabIndex = 10;
+            this.txtResultado.TabStop = false;
             // 
             // txtDividendo
             // 
-            this.txtDividendo.Location = new System.Drawing.Point(88, 45);
+            this.txtDividendo.Location = new System.Drawing.Point(88, 19);
             this.txtDividendo.Name = "txtDividendo";
             this.txtDividendo.Size = new System.Drawing.Size(100, 20);
             this.txtDividendo.TabIndex = 9;
@@ -158,10 +169,10 @@
             // 
             // txtDivisor
             // 
-            this.txtDivisor.Location = new System.Drawing.Point(88, 19);
+            this.txtDivisor.Location = new System.Drawing.Point(88, 45);
             this.txtDivisor.Name = "txtDivisor";
             this.txtDivisor.Size = new System.Drawing.Size(100, 20);
-            this.txtDivisor.TabIndex = 8;
+            this.txtDivisor.TabIndex = 10;
             this.txtDivisor.TextChanged += new System.EventHandler(this.txtDivisor_TextChanged);
             // 
             // lblOrdinarioI
@@ -174,6 +185,70 @@
             this.lblOrdinarioI.TabIndex = 10;
             this.lblOrdinarioI.Text = "Ordinario I";
             // 
+            // groupBox2
+            // 
+            this.groupBox2.Controls.Add(this.lblFilas);
+            this.groupBox2.Controls.Add(this.lblColumnas);
+            this.groupBox2.Controls.Add(this.btnImprimir);
+            this.groupBox2.Controls.Add(this.button2);
+            this.groupBox2.Controls.Add(this.textBox2);
+            this.groupBox2.Controls.Add(this.textBox3);
+            this.groupBox2.Location = new System.Drawing.Point(6, 6);
+            this.groupBox2.Name = "groupBox2";
+            this.groupBox2.Size = new System.Drawing.Size(616, 252);
+            this.groupBox2.TabIndex = 10;
+            this.groupBox2.TabStop = false;
+            // 
+            // lblFilas
+            // 
+            this.lblFilas.AutoSize = true;
+            this.lblFilas.Location = new System.Drawing.Point(6, 16);
+            this.lblFilas.Name = "lblFilas";
+            this.lblFilas.Size = new System.Drawing.Size(31, 13);
+            this.lblFilas.TabIndex = 14;
+            this.lblFilas.Text = "Filas:";
+            // 
+            // lblColumnas
+            // 
+            this.lblColumnas.AutoSize = true;
+            this.lblColumnas.Location = new System.Drawing.Point(6, 55);
+            this.lblColumnas.Name = "lblColumnas";
+            this.lblColumnas.Size = new System.Drawing.Size(56, 13);
+            this.lblColumnas.TabIndex = 13;
+            this.lblColumnas.Text = "Columnas:";
+            // 
+            // btnImprimir
+            // 
+            this.btnImprimir.Location = new System.Drawing.Point(9, 127);
+            this.btnImprimir.Name = "btnImprimir";
+            this.btnImprimir.Size = new System.Drawing.Size(75, 23);
+            this.btnImprimir.TabIndex = 11;
+            this.btnImprimir.Text = "Dividir";
+            this.btnImprimir.UseVisualStyleBackColor = true;
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(9, 98);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 12;
+            this.button2.Text = "Limpiar";
+            this.button2.UseVisualStyleBackColor = true;
+            // 
+            // textBox2
+            // 
+            this.textBox2.Location = new System.Drawing.Point(9, 32);
+            this.textBox2.Name = "textBox2";
+            this.textBox2.Size = new System.Drawing.Size(100, 20);
+            this.textBox2.TabIndex = 9;
+            // 
+            // textBox3
+            // 
+            this.textBox3.Location = new System.Drawing.Point(9, 72);
+            this.textBox3.Name = "textBox3";
+            this.textBox3.Size = new System.Drawing.Size(100, 20);
+            this.textBox3.TabIndex = 10;
+            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -182,11 +257,15 @@
             this.Controls.Add(this.lblOrdinarioI);
             this.Controls.Add(this.tabOrdinario);
             this.Name = "frmMain";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Form1";
             this.tabOrdinario.ResumeLayout(false);
+            this.tabMatriz.ResumeLayout(false);
             this.tabDivision.ResumeLayout(false);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();
+            this.groupBox2.ResumeLayout(false);
+            this.groupBox2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -195,7 +274,7 @@
         #endregion
 
         private System.Windows.Forms.TabControl tabOrdinario;
-        private System.Windows.Forms.TabPage tabPage1;
+        private System.Windows.Forms.TabPage tabMatriz;
         private System.Windows.Forms.TabPage tabDivision;
         private System.Windows.Forms.GroupBox groupBox1;
         private System.Windows.Forms.Label label2;
@@ -207,6 +286,13 @@
         private System.Windows.Forms.TextBox txtDividendo;
         private System.Windows.Forms.TextBox txtDivisor;
         private System.Windows.Forms.Label lblOrdinarioI;
+        private System.Windows.Forms.GroupBox groupBox2;
+        private System.Windows.Forms.Label lblFilas;
+        private System.Windows.Forms.Label lblColumnas;
+        private System.Windows.Forms.Button btnImprimir;
+        private System.Windows.Forms.Button button2;
+        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.TextBox textBox3;
     }
 }
 

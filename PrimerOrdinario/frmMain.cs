@@ -32,7 +32,7 @@ namespace PrimerOrdinario
                 }
 
             }
-            catch (Exception ex)
+            catch (Exception)
             {
                 numResult = false;
             }
@@ -41,20 +41,54 @@ namespace PrimerOrdinario
 
         private void txtDivisor_TextChanged(object sender, EventArgs e)
         {
+            txtResultado.Text = "";
             if (checkTextisNumber(txtDivisor.Text)){correctNum = txtDivisor.Text;}
-            else{txtDivisor.Text = correctNum;}
+            else{txtDivisor.Text = correctNum;  }
         }
 
         private void txtDividendo_TextChanged(object sender, EventArgs e)
         {
+            txtResultado.Text = "";
             if (checkTextisNumber(txtDividendo.Text)) { correctNum = txtDividendo.Text; }
-            else { txtDividendo.Text = correctNum; }
+            else { txtDividendo.Text = correctNum;  }
         }
 
         private void btnLimpiar_Click(object sender, EventArgs e)
         {
             txtDivisor.Text = "";
             txtDividendo.Text = "";
+        }
+
+        private void btnDividir_Click(object sender, EventArgs e)
+        {
+            string msgAlert = "";
+            try
+            {
+                if ((!string.IsNullOrWhiteSpace(txtDivisor.Text)) && (!string.IsNullOrWhiteSpace(txtDividendo.Text)))
+                {
+                    if (Convert.ToDouble(txtDivisor.Text) == 0)
+                    {
+                        msgAlert = "Divisor\r\n no pueden ser 0.";
+                    }
+                    else
+                    {
+                        Division division = new Division();
+                        division.dDivisor = Convert.ToDouble(txtDivisor.Text);
+                        division.dDividendo = Convert.ToDouble(txtDividendo.Text);
+                        txtResultado.Text = division.dResultado.ToString();
+                    }
+                }
+                else { msgAlert = "Divisor y Dividendo\r\n no pueden ser valores nulos o vacios."; }
+            }
+            catch (Exception ex)
+            {
+                msgAlert = ex.Message;
+            }
+            if (msgAlert != "")
+            {
+                MessageBox.Show(msgAlert, "Error!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            
         }
     }
 }
